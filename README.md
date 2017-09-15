@@ -6,6 +6,13 @@
 CUBA component that allows to write generic features for a Controller and use them in a declarative way.
 
 
+
+## Installation
+Currently you have to [download](https://github.com/balvi/cuba-component-declarative-controllers/archive/master.zip) the app-component manually and import it into Studio. After opening it in studio, you have to execute "Run > Install app component". After that you can go into your project and add the dependency to you project through "Project Properties > Edit > custom components (+) > cuba-component-runtime-diagnose".
+
+Note: This manual installation step will probably simplify with Version 6.6 of CUBA and studio.
+
+
 ### Motivation & Example usage: Comments feature
 
 So what does that mean? Here's an example [balvi/cuba-example-declarative-comments](https://github.com/balvi/cuba-example-declarative-comments):
