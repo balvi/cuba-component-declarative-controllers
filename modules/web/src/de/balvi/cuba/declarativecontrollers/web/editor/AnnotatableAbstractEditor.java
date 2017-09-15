@@ -7,8 +7,7 @@ import groovy.transform.CompileStatic;
 import javax.inject.Inject;
 import java.util.Map;
 
-@CompileStatic
-abstract class AnnotatableAbstractEditor<T extends Entity> extends AbstractEditor<T> {
+public class AnnotatableAbstractEditor<T extends Entity> extends AbstractEditor<T> {
 
     @Inject
     private EditorAnnotationExecutorService editorAnnotationExecutorService;

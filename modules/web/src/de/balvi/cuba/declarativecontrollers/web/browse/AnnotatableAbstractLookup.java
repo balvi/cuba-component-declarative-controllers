@@ -5,7 +5,7 @@ import com.haulmont.cuba.gui.components.AbstractLookup;
 import javax.inject.Inject;
 import java.util.Map;
 
-class AnnotatableAbstractLookup extends AbstractLookup {
+public class AnnotatableAbstractLookup extends AbstractLookup {
 
     @Inject
     private BrowseAnnotationExecutorService browseAnnotationExecutorService;
