@@ -1,0 +1,6 @@
+rootProject.name = 'cuba-component-declarative-controllers'
+include(':declarativecontrollers-global', ':declarativecontrollers-core', ':declarativecontrollers-gui', ':declarativecontrollers-web')
+project(':declarativecontrollers-global').projectDir = new File(settingsDir, 'modules/global')
+project(':declarativecontrollers-core').projectDir = new File(settingsDir, 'modules/core')
+project(':declarativecontrollers-gui').projectDir = new File(settingsDir, 'modules/gui')
+project(':declarativecontrollers-web').projectDir = new File(settingsDir, 'modules/web')
