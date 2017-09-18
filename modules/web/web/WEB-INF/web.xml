@@ -11,8 +11,7 @@
     <!-- Application properties config files -->
     <context-param>
         <param-name>appPropertiesConfig</param-name>
-        <param-value>classpath:cuba-web-app.properties
-            classpath:de/balvi/cuba/declarativecontrollers/web-app.properties
+        <param-value>classpath:de/balvi/cuba/declarativecontrollers/web-app.properties
             /WEB-INF/local.app.properties
             "file:${catalina.base}/conf/declarativecontrollers/local.app.properties"</param-value>
     </context-param>

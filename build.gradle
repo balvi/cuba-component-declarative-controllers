@@ -1,6 +1,6 @@
 
 buildscript {
-    ext.cubaVersion = '6.5.7'
+    ext.cubaVersion = '6.6.3'
     repositories {
         maven {
             url 'https://repo.cuba-platform.com/content/groups/work'
@@ -34,8 +34,8 @@ apply(plugin: 'cuba')
 cuba {
     artifact {
         group = 'de.balvi.cuba.declarativecontrollers'
-        version = '0.1'
-        isSnapshot = false
+        version = '0.2'
+        isSnapshot = true
     }
     tomcat {
         dir = "$project.rootDir/deploy/tomcat"
@@ -144,11 +144,7 @@ configure([globalModule, coreModule, guiModule, webModule]) {
         coverageIgnores = ['org.slf4j.Logger.*']
         coverageReportDir = new File("$buildDir/reports/cobertura")
 
-        coverageExcludes = [
-                '.*Generator',
-                '.*Enum',
-                '.*Hilfe.*' // Hilfe wird vorerst deaktiviert, da die Hilfe noch einem großen Refactoring unterliegt und dies bisher nur ein Proof of Concept ist
-        ]
+        coverageExcludes = []
     }
 
     test.finalizedBy(project.tasks.cobertura)
@@ -307,7 +303,7 @@ task restart(dependsOn: ['stop', ':declarativecontrollers-core:deploy', ':declar
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.1'
+    gradleVersion = '3.4'
 }
 
 apply from: 'extra.gradle'
