@@ -12,6 +12,20 @@ Currently you have to [download](https://github.com/balvi/cuba-component-declara
 
 Note: This manual installation step will probably simplify with Version 6.6 of CUBA and studio.
 
+## Usage
+
+Select a version of the add-on which is compatible with the platform version used in your project:
+
+| Platform Version | Add-on Version |
+| ---------------- | -------------- |
+| 6.6.x            | 0.2.0          |
+| 6.5.x            | 0.1.0          |
+
+Add custom application component to your project:
+
+* Artifact group: `de.balvi.cuba.declarativecontrollers`
+* Artifact name: `declarative-controllers-global`
+* Version: *add-on version*
 
 ### Motivation & Example usage: Comments feature
 
