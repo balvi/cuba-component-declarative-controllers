@@ -2,7 +2,7 @@ package de.balvi.cuba.declarativecontrollers.web.browse;
 
 import java.util.Map;
 
-public interface BrowseAnnotationExecutorService {
+public interface BrowseAnnotationDispatcher {
 
     String NAME = "dbcdc_BrowseAnnotationExecutorService";
 

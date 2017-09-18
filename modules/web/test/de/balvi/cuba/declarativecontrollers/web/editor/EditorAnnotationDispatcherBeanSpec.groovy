@@ -4,8 +4,8 @@ import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 import spock.lang.Specification
 
-class EditorAnnotationExecutorServiceBeanSpec extends Specification {
-    EditorAnnotationExecutorService editorAnnotationExecutorService
+class EditorAnnotationDispatcherBeanSpec extends Specification {
+    EditorAnnotationDispatcher editorAnnotationExecutorService
     EditorAnnotationExecutor executor
     EditorAnnotationExecutor executor2
 
@@ -13,7 +13,7 @@ class EditorAnnotationExecutorServiceBeanSpec extends Specification {
         executor = Mock()
         executor2 = Mock()
 
-        editorAnnotationExecutorService = new EditorAnnotationExecutorServiceMock([executor, executor2])
+        editorAnnotationExecutorService = new EditorAnnotationDispatcherMock([executor, executor2])
     }
 
     void 'executeInit does nothing if the editor has no annotations'() {
@@ -143,11 +143,11 @@ class EditorAnnotationExecutorServiceBeanSpec extends Specification {
     }
 }
 
-class EditorAnnotationExecutorServiceMock extends EditorAnnotationExecutorServiceBean {
+class EditorAnnotationDispatcherMock extends EditorAnnotationDispatcherBean {
 
     Collection<EditorAnnotationExecutor> annotationExecutorCollection
 
-    EditorAnnotationExecutorServiceMock(Collection<EditorAnnotationExecutor> annotationExecutorCollection) {
+    EditorAnnotationDispatcherMock(Collection<EditorAnnotationExecutor> annotationExecutorCollection) {
         this.annotationExecutorCollection = annotationExecutorCollection
     }
 

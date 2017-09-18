@@ -2,7 +2,6 @@ package de.balvi.cuba.declarativecontrollers.web.editor;
 
 import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.gui.components.AbstractEditor;
-import groovy.transform.CompileStatic;
 
 import javax.inject.Inject;
 import java.util.Map;
@@ -10,18 +9,18 @@ import java.util.Map;
 public class AnnotatableAbstractEditor<T extends Entity> extends AbstractEditor<T> {
 
     @Inject
-    private EditorAnnotationExecutorService editorAnnotationExecutorService;
+    private EditorAnnotationDispatcher editorAnnotationDispatcher;
 
     @Override
     public void init(Map<String, Object> params) {
         super.init(params);
-        editorAnnotationExecutorService.executeInit(this, params);
+        editorAnnotationDispatcher.executeInit(this, params);
     }
 
     @Override
     protected void postInit() {
         super.postInit();
-        editorAnnotationExecutorService.executePostInit(this);
+        editorAnnotationDispatcher.executePostInit(this);
     }
 
 }

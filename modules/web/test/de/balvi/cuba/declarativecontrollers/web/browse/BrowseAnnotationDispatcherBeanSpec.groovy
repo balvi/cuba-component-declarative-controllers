@@ -4,8 +4,8 @@ import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 import spock.lang.Specification
 
-class BrowseAnnotationExecutorServiceBeanSpec extends Specification {
-    BrowseAnnotationExecutorService browseAnnotationExecutorService
+class BrowseAnnotationDispatcherBeanSpec extends Specification {
+    BrowseAnnotationDispatcher browseAnnotationExecutorService
     BrowseAnnotationExecutor executor
     BrowseAnnotationExecutor executor2
 
@@ -13,7 +13,7 @@ class BrowseAnnotationExecutorServiceBeanSpec extends Specification {
         executor = Mock()
         executor2 = Mock()
 
-        browseAnnotationExecutorService = new BrowseAnnotationExecutorServiceMock([executor, executor2])
+        browseAnnotationExecutorService = new BrowseAnnotationDispatcherMock([executor, executor2])
     }
 
     void 'executeInit does nothing if the browser has no annotations'() {
@@ -146,11 +146,11 @@ class BrowseAnnotationExecutorServiceBeanSpec extends Specification {
     }
 }
 
-class BrowseAnnotationExecutorServiceMock extends BrowseAnnotationExecutorServiceBean {
+class BrowseAnnotationDispatcherMock extends BrowseAnnotationDispatcherBean {
 
     Collection<BrowseAnnotationExecutor> annotationExecutorCollection
 
-    BrowseAnnotationExecutorServiceMock(Collection<BrowseAnnotationExecutor> annotationExecutorCollection) {
+    BrowseAnnotationDispatcherMock(Collection<BrowseAnnotationExecutor> annotationExecutorCollection) {
         this.annotationExecutorCollection = annotationExecutorCollection
     }
 

@@ -8,7 +8,7 @@ import java.util.Map;
 public class AnnotatableAbstractLookup extends AbstractLookup {
 
     @Inject
-    private BrowseAnnotationExecutorService browseAnnotationExecutorService;
+    private BrowseAnnotationDispatcher browseAnnotationDispatcher;
 
     private Map<String, Object> params;
 
@@ -16,12 +16,12 @@ public class AnnotatableAbstractLookup extends AbstractLookup {
     public void init(Map<String, Object> params) {
         super.init(params);
         this.params = params;
-        browseAnnotationExecutorService.executeInit(this, params);
+        browseAnnotationDispatcher.executeInit(this, params);
     }
 
     @Override
     public void ready() {
-        browseAnnotationExecutorService.executeReady(this, params);
+        browseAnnotationDispatcher.executeReady(this, params);
     }
 
 }

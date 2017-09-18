@@ -5,14 +5,14 @@ import spock.lang.Specification
 class AnnotatableAbstractLookupSpec extends Specification {
 
     AnnotatableAbstractLookup browse
-    BrowseAnnotationExecutorService browseAnnotationExecutorService
+    BrowseAnnotationDispatcher browseAnnotationExecutorService
 
     def setup() {
 
-        browseAnnotationExecutorService = Mock(BrowseAnnotationExecutorService)
+        browseAnnotationExecutorService = Mock(BrowseAnnotationDispatcher)
 
         browse = new AnnotatableAbstractLookup(
-                browseAnnotationExecutorService: browseAnnotationExecutorService
+                browseAnnotationDispatcher: browseAnnotationExecutorService
         )
     }
 
