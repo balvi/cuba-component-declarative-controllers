@@ -34,8 +34,8 @@ apply(plugin: 'cuba')
 cuba {
     artifact {
         group = 'de.balvi.cuba.declarativecontrollers'
-        version = '0.2'
-        isSnapshot = false
+        version = '0.3'
+        isSnapshot = true
     }
     tomcat {
         dir = "$project.rootDir/deploy/tomcat"
