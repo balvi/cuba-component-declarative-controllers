@@ -16,7 +16,7 @@ buildscript {
     dependencies {
         classpath "com.haulmont.gradle:cuba-plugin:$cubaVersion"
 
-        classpath 'net.saliman:gradle-cobertura-plugin:2.3.2'
+        classpath 'net.saliman:gradle-cobertura-plugin:2.5.0'
     }
 }
 
@@ -41,12 +41,7 @@ cuba {
         dir = "$project.rootDir/deploy/tomcat"
     }
     uploadRepository {
-        if (cuba.artifact.isSnapshot) {
-            url = System.env.UPLOAD_REPOSITORY_SNAPSHOT
-        } else {
-            url = System.env.UPLOAD_REPOSITORY_RELEASE
-        }
-
+        url = "https://api.bintray.com/maven/mariodavid/cuba-components/cuba-component-declarative-controllers/;publish=1"
         user = System.env.UPLOAD_REPOSITORY_USERNAME
         password = System.env.UPLOAD_REPOSITORY_PASSWORD
     }
