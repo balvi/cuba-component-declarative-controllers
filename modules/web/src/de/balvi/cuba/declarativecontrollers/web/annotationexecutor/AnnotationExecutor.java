@@ -1,4 +1,4 @@
-package de.balvi.cuba.declarativecontrollers.web;
+package de.balvi.cuba.declarativecontrollers.web.annotationexecutor;
 
 import java.lang.annotation.Annotation;
 

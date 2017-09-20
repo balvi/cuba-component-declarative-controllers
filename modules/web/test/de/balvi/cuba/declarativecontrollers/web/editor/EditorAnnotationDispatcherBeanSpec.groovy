@@ -1,5 +1,6 @@
 package de.balvi.cuba.declarativecontrollers.web.editor
 
+import de.balvi.cuba.declarativecontrollers.web.annotationexecutor.editor.EditorAnnotationExecutor
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 import spock.lang.Specification

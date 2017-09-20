@@ -21,6 +21,10 @@
                   value="+de/balvi/cuba/declarativecontrollers/spring.xml"/>
         <property name="cuba.mainMessagePack"
                   value="+de.balvi.cuba.declarativecontrollers.core"/>
+        <artifact classifier="db"
+                  configuration="dbscripts"
+                  ext="zip"
+                  name="declarativecontrollers-core"/>
     </module>
     <module blocks="web,desktop"
             dependsOn="global"

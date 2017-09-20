@@ -1,4 +1,3 @@
--- begin DBCDC_CUSTOMER
 create table DBCDC_CUSTOMER (
     ID varchar(36) not null,
     VERSION integer not null,
@@ -12,5 +11,4 @@ create table DBCDC_CUSTOMER (
     NAME varchar(255),
     --
     primary key (ID)
-)^
--- end DBCDC_CUSTOMER
+);

@@ -18,8 +18,8 @@ Select a version of the add-on which is compatible with the platform version use
 
 | Platform Version | Add-on Version |
 | ---------------- | -------------- |
-| 6.6.x            | 0.2.0          |
-| 6.5.x            | 0.1.0          |
+| 6.6.x            | 0.2.x - 0.3.x  |
+| 6.5.x            | 0.1.x          |
 
 Add custom application component to your project:
 
@@ -86,8 +86,13 @@ is the only superclass you need to extend from. Not for every feature another su
 
 ## Defining Annotations 
 
+
 Generally, there is another example repository, which shows the usage of this application component: [balvi/cuba-example-declarative-comments](https://github.com/balvi/cuba-example-declarative-comments) 
 with the exact example of the `@Commentable`.
+
+The application component allows two kinds of Annotations. A class-based Annotation and a field-based Annotation.
+
+### Class-based Annotation: @Commentable
 
 To create custom feature like `@Commentable` you have to do the following:
 
@@ -149,6 +154,13 @@ For editors the hook methods are:
 Those hook methods have the same semantics as the standard CUBA controller hook methods. For more information
 you can take a look at the corresponding CUBA docs for 
 [AbstractLookup](https://doc.cuba-platform.com/manual-6.6/abstractLookup.html) and [AbstractEditor](https://doc.cuba-platform.com/manual-6.6/abstractEditor.html).
+
+
+### Field-based Annotations
+
+Field based annotations are useful if you want to enhance a particular Component on the page.
+
+You can find the example for this in the example-project: [@IconCommentedEntities](https://github.com/balvi/cuba-example-declarative-comments/blob/master/modules/web/src/de/balvi/cuba/example/declarativecomments/web/iconcommented/IconCommentedEntities.groovy)
 
 
 That's it. 
