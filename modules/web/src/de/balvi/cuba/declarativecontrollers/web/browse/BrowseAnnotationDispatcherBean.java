@@ -4,7 +4,6 @@ import com.haulmont.cuba.core.global.AppBeans;
 import de.balvi.cuba.declarativecontrollers.web.annotationexecutor.AbstractAnnotationDispatcherBean;
 import de.balvi.cuba.declarativecontrollers.web.annotationexecutor.browse.BrowseAnnotationExecutor;
 import de.balvi.cuba.declarativecontrollers.web.annotationexecutor.browse.BrowseFieldAnnotationExecutor;
-import groovy.transform.CompileStatic;
 import org.springframework.stereotype.Component;
 
 import java.lang.annotation.Annotation;
@@ -26,22 +25,25 @@ class BrowseAnnotationDispatcherBean extends AbstractAnnotationDispatcherBean<Br
             Annotation[] fieldAnnotations = field.getAnnotations();
 
             for (Annotation annotation : fieldAnnotations) {
-                com.haulmont.cuba.gui.components.Component fieldValue = getFieldValue(browse, field);
 
-                Collection<BrowseFieldAnnotationExecutor> supportedAnnotations = getSupportedBrowseFieldAnnotationExecutors(annotation);
+                Collection<BrowseFieldAnnotationExecutor> supportedAnnotationExecutors = getSupportedBrowseFieldAnnotationExecutors(annotation);
 
-                for (BrowseFieldAnnotationExecutor annotationExecutor : supportedAnnotations) {
-                    annotationExecutor.init(annotation, browse, fieldValue, params);
+                if (supportedAnnotationExecutors != null && supportedAnnotationExecutors.size() > 0) {
+                    com.haulmont.cuba.gui.components.Component fieldValue = getFieldValue(browse, field);
+                    for (BrowseFieldAnnotationExecutor annotationExecutor : supportedAnnotationExecutors) {
+                        annotationExecutor.init(annotation, browse, fieldValue, params);
+                    }
                 }
+
             }
         }
     }
 
     private void executeInitForClassAnnotations(AnnotatableAbstractLookup browse, Map<String, Object> params) {
         for (Annotation annotation : getClassAnnotations(browse)) {
-            Collection<BrowseAnnotationExecutor> supportedAnnotations = getSupportedBrowseAnnotationExecutors(annotation);
+            Collection<BrowseAnnotationExecutor> supportedAnnotationExecutors = getSupportedBrowseAnnotationExecutors(annotation);
 
-            for (BrowseAnnotationExecutor annotationExecutor : supportedAnnotations) {
+            for (BrowseAnnotationExecutor annotationExecutor : supportedAnnotationExecutors) {
                 annotationExecutor.init(annotation, browse, params);
             }
         }
@@ -60,12 +62,14 @@ class BrowseAnnotationDispatcherBean extends AbstractAnnotationDispatcherBean<Br
 
             Annotation[] fieldAnnotations = field.getAnnotations();
             for (Annotation annotation : fieldAnnotations) {
-                com.haulmont.cuba.gui.components.Component fieldValue = getFieldValue(browse, field);
 
-                Collection<BrowseFieldAnnotationExecutor> supportedAnnotations = getSupportedBrowseFieldAnnotationExecutors(annotation);
+                Collection<BrowseFieldAnnotationExecutor> supportedAnnotationExecutors = getSupportedBrowseFieldAnnotationExecutors(annotation);
 
-                for (BrowseFieldAnnotationExecutor annotationExecutor : supportedAnnotations) {
-                    annotationExecutor.ready(annotation, browse, fieldValue, params);
+                if (supportedAnnotationExecutors != null && supportedAnnotationExecutors.size() > 0) {
+                    com.haulmont.cuba.gui.components.Component fieldValue = getFieldValue(browse, field);
+                    for (BrowseFieldAnnotationExecutor annotationExecutor : supportedAnnotationExecutors) {
+                        annotationExecutor.ready(annotation, browse, fieldValue, params);
+                    }
                 }
             }
         }
