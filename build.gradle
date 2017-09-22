@@ -31,19 +31,26 @@ def servletApi = 'org.apache.tomcat:tomcat-servlet-api:8.0.26'
 apply(plugin: 'idea')
 apply(plugin: 'cuba')
 
+def bintrayRepositoryUrl = "https://api.bintray.com/maven/balvi/cuba-components/cuba-component-declarative-controllers/;publish=1"
+
 cuba {
     artifact {
         group = 'de.balvi.cuba.declarativecontrollers'
-        version = '0.3.1'
-        isSnapshot = false
+        version = '0.4.0'
+        isSnapshot = true
     }
     tomcat {
         dir = "$project.rootDir/deploy/tomcat"
     }
     uploadRepository {
-        url = "https://api.bintray.com/maven/mariodavid/cuba-components/cuba-component-declarative-controllers/;publish=1"
-        user = System.env.UPLOAD_REPOSITORY_USERNAME
-        password = System.env.UPLOAD_REPOSITORY_PASSWORD
+        if (cuba.artifact.isSnapshot) {
+            url = System.properties['uploadRepositorySnapshot'] ?: System.env.UPLOAD_REPOSITORY_SNAPSHOT
+        } else {
+            url = System.properties['uploadRepositoryRelease'] ?: System.env.UPLOAD_REPOSITORY_RELEASE ?: bintrayRepositoryUrl
+        }
+
+        user = System.properties['uploadRepositoryUsername'] ?: System.env.UPLOAD_REPOSITORY_USERNAME
+        password = System.properties['uploadRepositoryPassword'] ?:System.env.UPLOAD_REPOSITORY_PASSWORD
     }
     ide {
         vcs = 'Git'

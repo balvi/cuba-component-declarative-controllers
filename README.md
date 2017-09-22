@@ -6,20 +6,35 @@
 CUBA component that allows to write generic features for a Controller and use them in a declarative way.
 
 
-
 ## Installation
-Currently you have to [download](https://github.com/balvi/cuba-component-declarative-controllers/archive/master.zip) the app-component manually and import it into Studio. After opening it in studio, you have to execute "Run > Install app component". After that you can go into your project and add the dependency to you project through "Project Properties > Edit > custom components (+) > cuba-component-runtime-diagnose".
 
-Note: This manual installation step will probably simplify with Version 6.6 of CUBA and studio.
+1. Add the following maven repository `https://dl.bintray.com/balvi/cuba-components` to the build.gradle of your CUBA application:
 
-## Usage
 
-Select a version of the add-on which is compatible with the platform version used in your project:
+    buildscript {
+        
+        //...
+        
+        repositories {
+        
+            // ...
+        
+            maven {
+                url  "https://dl.bintray.com/balvi/cuba-components"
+            }
+        }
+        
+        // ...
+    }
+
+2. Select a version of the add-on which is compatible with the platform version used in your project:
 
 | Platform Version | Add-on Version |
 | ---------------- | -------------- |
 | 6.6.x            | 0.2.x - 0.3.x  |
 | 6.5.x            | 0.1.x          |
+
+The latest version is: `0.3.1`
 
 Add custom application component to your project:
 
