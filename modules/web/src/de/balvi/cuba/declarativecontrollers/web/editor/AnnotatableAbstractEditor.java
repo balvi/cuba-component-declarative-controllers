@@ -9,7 +9,7 @@ import java.util.Map;
 public class AnnotatableAbstractEditor<T extends Entity> extends AbstractEditor<T> {
 
     @Inject
-    private EditorAnnotationDispatcher editorAnnotationDispatcher;
+    protected EditorAnnotationDispatcher editorAnnotationDispatcher;
 
     @Override
     public void init(Map<String, Object> params) {

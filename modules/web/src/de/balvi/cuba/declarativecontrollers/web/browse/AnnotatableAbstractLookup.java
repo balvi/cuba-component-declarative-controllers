@@ -8,7 +8,7 @@ import java.util.Map;
 public class AnnotatableAbstractLookup extends AbstractLookup {
 
     @Inject
-    private BrowseAnnotationDispatcher browseAnnotationDispatcher;
+    protected BrowseAnnotationDispatcher browseAnnotationDispatcher;
 
     private Map<String, Object> params;
 
