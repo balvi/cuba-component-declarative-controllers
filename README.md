@@ -34,7 +34,7 @@ CUBA component that allows to write generic features for a Controller and use th
 | 6.6.x            | 0.2.x - 0.3.x  |
 | 6.5.x            | 0.1.x          |
 
-The latest version is: `0.3.1`
+The latest version is: `0.3.3`
 
 Add custom application component to your project:
 
