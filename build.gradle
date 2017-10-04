@@ -1,6 +1,6 @@
 
 buildscript {
-    ext.cubaVersion = '6.6.3'
+    ext.cubaVersion = '6.5.7'
     repositories {
         maven {
             url 'https://repo.cuba-platform.com/content/groups/work'
@@ -36,7 +36,7 @@ def bintrayRepositoryUrl = "https://api.bintray.com/maven/balvi/cuba-components/
 cuba {
     artifact {
         group = 'de.balvi.cuba.declarativecontrollers'
-        version = '0.3.3'
+        version = '0.3.4'
         isSnapshot = false
     }
     tomcat {
