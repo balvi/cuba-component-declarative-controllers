@@ -305,7 +305,7 @@ task restart(dependsOn: ['stop', ':declarativecontrollers-core:deploy', ':declar
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.4'
+    gradleVersion = '3.5'
 }
 
 apply from: 'extra.gradle'
