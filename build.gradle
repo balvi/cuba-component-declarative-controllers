@@ -1,6 +1,6 @@
 
 buildscript {
-    ext.cubaVersion = '6.7-SNAPSHOT'
+    ext.cubaVersion = '6.8.0'
     repositories {
         maven {
             url 'https://repo.cuba-platform.com/content/groups/work'
@@ -36,8 +36,8 @@ def bintrayRepositoryUrl = "https://api.bintray.com/maven/balvi/cuba-components/
 cuba {
     artifact {
         group = 'de.balvi.cuba.declarativecontrollers'
-        version = '0.4.1'
-        isSnapshot = true
+        version = '0.5.0'
+        isSnapshot = false
     }
     tomcat {
         dir = "$project.rootDir/deploy/tomcat"
@@ -305,7 +305,7 @@ task restart(dependsOn: ['stop', ':declarativecontrollers-core:deploy', ':declar
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.5'
+    gradleVersion = '4.3.1'
 }
 
 apply from: 'extra.gradle'

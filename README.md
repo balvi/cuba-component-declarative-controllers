@@ -1,5 +1,6 @@
 [![license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Build Status](https://travis-ci.org/balvi/cuba-component-declarative-controllers.svg?branch=master)](https://travis-ci.org/balvi/cuba-component-declarative-controllers)
+[ ![Download](https://api.bintray.com/packages/balvi/cuba-components/cuba-component-declarative-controllers/images/download.svg) ](https://bintray.com/balvi/cuba-components/cuba-component-declarative-controllers/_latestVersion)
 
 # CUBA Platform Component - Declarative Controllers
 
@@ -10,7 +11,7 @@ CUBA component that allows to write generic features for a Controller and use th
 
 1. Add the following maven repository `https://dl.bintray.com/balvi/cuba-components` to the build.gradle of your CUBA application:
 
-
+    
     buildscript {
         
         //...
@@ -26,16 +27,18 @@ CUBA component that allows to write generic features for a Controller and use th
         
         // ...
     }
+    
 
 2. Select a version of the add-on which is compatible with the platform version used in your project:
 
 | Platform Version | Add-on Version |
 | ---------------- | -------------- |
+| 6.8.x            | 0.5.x          |
 | 6.7.x            | 0.4.x          |
 | 6.6.x            | 0.2.x - 0.3.x  |
 | 6.5.x            | 0.1.x          |
 
-The latest version is: `0.4.0`
+The latest version is:  [ ![Download](https://api.bintray.com/packages/balvi/cuba-components/cuba-component-declarative-controllers/images/download.svg) ](https://bintray.com/balvi/cuba-components/cuba-component-declarative-controllers/_latestVersion)
 
 Add custom application component to your project:
 
