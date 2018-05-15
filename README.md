@@ -165,6 +165,16 @@ For Browse screens these are:
 * `init`
 * `ready`
 
+>When overriding `init` method into your controllers, make sure to call its super method:
+>````
+>@Override
+>void init(Map<String, Object> params) {
+>       super.init(params)
+>       //your code here ...
+>}
+>````
+
+
 For editors the hook methods are:
 
 * `init`
@@ -172,7 +182,7 @@ For editors the hook methods are:
 
 Those hook methods have the same semantics as the standard CUBA controller hook methods. For more information
 you can take a look at the corresponding CUBA docs for 
-[AbstractLookup](https://doc.cuba-platform.com/manual-6.6/abstractLookup.html) and [AbstractEditor](https://doc.cuba-platform.com/manual-6.6/abstractEditor.html).
+[AbstractLookup](https://doc.cuba-platform.com/manual-6.8/abstractLookup.html) and [AbstractEditor](https://doc.cuba-platform.com/manual-6.8/abstractEditor.html).
 
 
 ### Field-based Annotations
