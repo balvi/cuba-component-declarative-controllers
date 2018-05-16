@@ -26,7 +26,7 @@ class CombinedAnnotationDispatcherBean extends AbstractAnnotationDispatcherBean<
 
             for (Annotation annotation : fieldAnnotations) {
 
-                Collection<BrowseFieldAnnotationExecutor> supportedAnnotationExecutors = getSupportedCombinedFieldAnnotationExecutors(annotation);
+                Collection<BrowseFieldAnnotationExecutor> supportedAnnotationExecutors = getSupportedAnnotationExecutors(getCombinedFieldAnnotationExecutors(), annotation);
 
                 if (supportedAnnotationExecutors != null && supportedAnnotationExecutors.size() > 0) {
                     com.haulmont.cuba.gui.components.Component fieldValue = getFieldValue(browse, field);
@@ -41,7 +41,7 @@ class CombinedAnnotationDispatcherBean extends AbstractAnnotationDispatcherBean<
 
     private void executeInitForClassAnnotations(AnnotatableAbstractCombined browse, Map<String, Object> params) {
         for (Annotation annotation : getClassAnnotations(browse)) {
-            Collection<BrowseAnnotationExecutor> supportedAnnotationExecutors = getSupportedCombinedAnnotationExecutors(annotation);
+            Collection<BrowseAnnotationExecutor> supportedAnnotationExecutors = getSupportedAnnotationExecutors(getCombinedAnnotationExecutors(), annotation);
 
             for (BrowseAnnotationExecutor annotationExecutor : supportedAnnotationExecutors) {
                 annotationExecutor.init(annotation, browse, params);
@@ -62,7 +62,7 @@ class CombinedAnnotationDispatcherBean extends AbstractAnnotationDispatcherBean<
             Annotation[] fieldAnnotations = field.getAnnotations();
             for (Annotation annotation : fieldAnnotations) {
 
-                Collection<BrowseFieldAnnotationExecutor> supportedAnnotationExecutors = getSupportedCombinedFieldAnnotationExecutors(annotation);
+                Collection<BrowseFieldAnnotationExecutor> supportedAnnotationExecutors = getSupportedAnnotationExecutors(getCombinedFieldAnnotationExecutors(), annotation);
 
                 if (supportedAnnotationExecutors != null && supportedAnnotationExecutors.size() > 0) {
                     com.haulmont.cuba.gui.components.Component fieldValue = getFieldValue(browse, field);
@@ -77,7 +77,7 @@ class CombinedAnnotationDispatcherBean extends AbstractAnnotationDispatcherBean<
     private void executeReadyForClassAnnotations(AnnotatableAbstractCombined browse, Map<String, Object> params) {
         for (Annotation annotation : getClassAnnotations(browse)) {
 
-            Collection<BrowseAnnotationExecutor> supportedAnnotations = getSupportedCombinedAnnotationExecutors(annotation);
+            Collection<BrowseAnnotationExecutor> supportedAnnotations = getSupportedAnnotationExecutors(getCombinedAnnotationExecutors(), annotation);
 
             for (BrowseAnnotationExecutor annotationExecutor : supportedAnnotations) {
                 annotationExecutor.ready(annotation, browse, params);
@@ -85,7 +85,7 @@ class CombinedAnnotationDispatcherBean extends AbstractAnnotationDispatcherBean<
         }
     }
 
-
+    /*
     protected Collection<BrowseAnnotationExecutor> getSupportedCombinedAnnotationExecutors(Annotation annotation) {
         Collection<BrowseAnnotationExecutor> annotationExecutors = getCombinedAnnotationExecutors();
         return (Collection<BrowseAnnotationExecutor>) getSupportedAnnotationExecutors(annotationExecutors, annotation);
@@ -95,7 +95,7 @@ class CombinedAnnotationDispatcherBean extends AbstractAnnotationDispatcherBean<
         Collection<BrowseFieldAnnotationExecutor> annotationExecutors = getCombinedFieldAnnotationExecutors();
         return (Collection<BrowseFieldAnnotationExecutor>) getSupportedAnnotationExecutors(annotationExecutors, annotation);
     }
-
+  */
     protected Collection<BrowseAnnotationExecutor> getCombinedAnnotationExecutors() {
         return AppBeans.getAll(BrowseAnnotationExecutor.class).values();
     }
@@ -103,6 +103,8 @@ class CombinedAnnotationDispatcherBean extends AbstractAnnotationDispatcherBean<
 
     protected Collection<BrowseFieldAnnotationExecutor> getCombinedFieldAnnotationExecutors() {
         return AppBeans.getAll(BrowseFieldAnnotationExecutor.class).values();
+
     }
+
 }
 
