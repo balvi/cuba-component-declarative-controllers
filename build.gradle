@@ -83,7 +83,7 @@ cobertura {
     coverageCheckTotalLineRate = 40
     coverageCheckHaltOnFailure = true
     coverageSourceDirs = sourceDirs
-//    coverageCheckLineRate = 1
+    coverageCheckLineRate = 40
     coverageCheckRegexes = [[regex: '.*\\$.*', branchRate: 0, lineRate: 0]]
 
 }
