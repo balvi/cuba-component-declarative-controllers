@@ -1,4 +1,3 @@
-
 buildscript {
     ext.cubaVersion = '6.8.0'
     repositories {
@@ -36,7 +35,7 @@ def bintrayRepositoryUrl = "https://api.bintray.com/maven/balvi/cuba-components/
 cuba {
     artifact {
         group = 'de.balvi.cuba.declarativecontrollers'
-        version = '0.5.0'
+        version = '0.5.1'
         isSnapshot = false
     }
     tomcat {
@@ -84,7 +83,7 @@ cobertura {
     coverageCheckTotalLineRate = 40
     coverageCheckHaltOnFailure = true
     coverageSourceDirs = sourceDirs
-//    coverageCheckLineRate = 1
+    coverageCheckLineRate = 40
     coverageCheckRegexes = [[regex: '.*\\$.*', branchRate: 0, lineRate: 0]]
 
 }

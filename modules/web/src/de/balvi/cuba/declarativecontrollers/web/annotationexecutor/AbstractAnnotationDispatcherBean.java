@@ -1,6 +1,9 @@
 package de.balvi.cuba.declarativecontrollers.web.annotationexecutor;
 
+import com.haulmont.cuba.core.global.AppBeans;
 import com.haulmont.cuba.gui.components.Frame;
+import de.balvi.cuba.declarativecontrollers.web.annotationexecutor.browse.BrowseAnnotationExecutor;
+import de.balvi.cuba.declarativecontrollers.web.annotationexecutor.browse.BrowseFieldAnnotationExecutor;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -28,14 +31,14 @@ abstract public class AbstractAnnotationDispatcherBean<T extends AnnotationExecu
         return frame.getClass().getAnnotations();
     }
 
-    protected Collection<? extends AnnotationExecutor> getSupportedAnnotationExecutors(Collection<? extends AnnotationExecutor> potentialAnnotationExecutors, Annotation annotation) {
+    protected <T extends AnnotationExecutor> Collection<T> getSupportedAnnotationExecutors(Collection<T> potentialAnnotationExecutors, Annotation annotation) {
         Collection<AnnotationExecutor> result = new ArrayList<AnnotationExecutor>();
         for (AnnotationExecutor annotationExecutor : potentialAnnotationExecutors) {
             if (annotationExecutor.supports(annotation)) {
                 result.add(annotationExecutor);
             }
         }
-        return result;
-
+        return (Collection<T>) result;
     }
+
 }

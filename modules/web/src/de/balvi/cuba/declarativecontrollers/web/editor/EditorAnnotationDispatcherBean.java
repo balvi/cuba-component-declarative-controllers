@@ -25,7 +25,7 @@ class EditorAnnotationDispatcherBean extends AbstractAnnotationDispatcherBean im
     private void executeInitForClassAnnotations(AnnotatableAbstractEditor editor, Map<String, Object> params) {
         for (Annotation annotation : getClassAnnotations(editor)) {
 
-            Collection<EditorAnnotationExecutor> supportedAnnotationExecutors = getSupportedEditorAnnotationExecutors(annotation);
+            Collection<EditorAnnotationExecutor> supportedAnnotationExecutors = getSupportedAnnotationExecutors(getEditorAnnotationExecutors(), annotation);
 
             for (EditorAnnotationExecutor annotationExecutor : supportedAnnotationExecutors) {
                 annotationExecutor.init(annotation, editor, params);
@@ -38,7 +38,7 @@ class EditorAnnotationDispatcherBean extends AbstractAnnotationDispatcherBean im
             Annotation[] fieldAnnotations = field.getAnnotations();
             for (Annotation annotation : fieldAnnotations) {
 
-                Collection<EditorFieldAnnotationExecutor> supportedAnnotationExecutors = getSupportedEditorFieldAnnotationExecutors(annotation);
+                Collection<EditorFieldAnnotationExecutor> supportedAnnotationExecutors = getSupportedAnnotationExecutors(getEditorFieldAnnotationExecutors(), annotation);
 
                 if (supportedAnnotationExecutors != null && supportedAnnotationExecutors.size() > 0) {
                     com.haulmont.cuba.gui.components.Component fieldValue = getFieldValue(editor, field);
@@ -62,7 +62,7 @@ class EditorAnnotationDispatcherBean extends AbstractAnnotationDispatcherBean im
         for (Field field : getDeclaredFields(editor)) {
             Annotation[] fieldAnnotations = field.getAnnotations();
             for (Annotation annotation : fieldAnnotations) {
-                Collection<EditorFieldAnnotationExecutor> supportedAnnotationExecutors = getSupportedEditorFieldAnnotationExecutors(annotation);
+                Collection<EditorFieldAnnotationExecutor> supportedAnnotationExecutors = getSupportedAnnotationExecutors(getEditorFieldAnnotationExecutors(), annotation);
 
                 if (supportedAnnotationExecutors != null && supportedAnnotationExecutors.size() > 0) {
                     com.haulmont.cuba.gui.components.Component fieldValue = getFieldValue(editor, field);
@@ -78,7 +78,7 @@ class EditorAnnotationDispatcherBean extends AbstractAnnotationDispatcherBean im
 
         for (Annotation annotation : getClassAnnotations(editor)) {
 
-            Collection<EditorAnnotationExecutor> supportedAnnotationExecutors = getSupportedEditorAnnotationExecutors(annotation);
+            Collection<EditorAnnotationExecutor> supportedAnnotationExecutors = getSupportedAnnotationExecutors(getEditorAnnotationExecutors(), annotation);
 
             for (EditorAnnotationExecutor annotationExecutor : supportedAnnotationExecutors) {
                 annotationExecutor.postInit(annotation, editor);
@@ -86,6 +86,7 @@ class EditorAnnotationDispatcherBean extends AbstractAnnotationDispatcherBean im
         }
     }
 
+    /*
     protected Collection<EditorAnnotationExecutor> getSupportedEditorAnnotationExecutors(Annotation annotation) {
         Collection<EditorAnnotationExecutor> annotationExecutors = getEditorAnnotationExecutors();
         return (Collection<EditorAnnotationExecutor>) getSupportedAnnotationExecutors(annotationExecutors, annotation);
@@ -96,6 +97,7 @@ class EditorAnnotationDispatcherBean extends AbstractAnnotationDispatcherBean im
         return (Collection<EditorFieldAnnotationExecutor>) getSupportedAnnotationExecutors(annotationExecutors, annotation);
 
     }
+    */
 
     protected Collection<EditorAnnotationExecutor> getEditorAnnotationExecutors() {
         return AppBeans.getAll(EditorAnnotationExecutor.class).values();
