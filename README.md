@@ -33,6 +33,7 @@ CUBA component that allows to write generic features for a Controller and use th
 
 | Platform Version | Add-on Version |
 | ---------------- | -------------- |
+| 6.9.x            | 0.6.x          |
 | 6.8.x            | 0.5.x          |
 | 6.7.x            | 0.4.x          |
 | 6.6.x            | 0.2.x - 0.3.x  |
