@@ -9,10 +9,8 @@ buildscript {
                 password(rootProject.hasProperty('repoPass') ? rootProject['repoPass'] : 'cuba123')
             }
         }
-        
-        
-        
     }
+
     dependencies {
         classpath "com.haulmont.gradle:cuba-plugin:$cubaVersion"
         // Bintray upload plugin
@@ -32,8 +30,6 @@ def servletApi = 'javax.servlet:javax.servlet-api:3.1.0'
 apply(plugin: 'idea')
 apply(plugin: 'cuba')
 
-def bintrayRepositoryUrl = "https://api.bintray.com/maven/balvi/cuba-components/cuba-component-declarative-controllers/;publish=1"
-
 cuba {
     artifact {
         group = 'de.balvi.cuba.declarativecontrollers'
@@ -42,16 +38,6 @@ cuba {
     }
     tomcat {
         dir = "$project.rootDir/deploy/tomcat"
-    }
-    uploadRepository {
-        if (cuba.artifact.isSnapshot) {
-            url = System.properties['uploadRepositorySnapshot'] ?: System.env.UPLOAD_REPOSITORY_SNAPSHOT
-        } else {
-            url = System.properties['uploadRepositoryRelease'] ?: System.env.UPLOAD_REPOSITORY_RELEASE ?: bintrayRepositoryUrl
-        }
-
-        user = System.properties['uploadRepositoryUsername'] ?: System.env.UPLOAD_REPOSITORY_USERNAME
-        password = System.properties['uploadRepositoryPassword'] ?:System.env.UPLOAD_REPOSITORY_PASSWORD
     }
     ide {
         vcs = 'Git'
@@ -90,11 +76,9 @@ cobertura {
 
 }
 
-
 test.dependsOn(subprojects.collect{ ":${it.name}:test"} )
 test.finalizedBy(project.tasks.cobertura)
 test.finalizedBy(project.tasks.coberturaCheck)
-
 
 configure([globalModule, coreModule, guiModule, webModule]) {
     apply(plugin: 'java')
@@ -104,7 +88,6 @@ configure([globalModule, coreModule, guiModule, webModule]) {
 
     dependencies {
         testCompile('junit:junit:4.12')
-
         testCompile('org.spockframework:spock-core:1.0-groovy-2.4')
         testCompile('org.springframework:spring-test:4.3.1.RELEASE')
         testRuntime "cglib:cglib-nodep:3.2.4"
@@ -170,8 +153,6 @@ configure(globalModule) {
             attributes('App-Component-Version': cuba.artifact.version + (cuba.artifact.isSnapshot ? '-SNAPSHOT' : ''))
         }
     }
-
-    
 }
 
 configure(coreModule) {
@@ -225,7 +206,6 @@ configure(coreModule) {
 configure(guiModule) {
     dependencies {
         compile(globalModule)
-
     }
 
     task deployConf(type: Copy) {
@@ -243,7 +223,6 @@ configure(webModule) {
     dependencies {
         provided(servletApi)
         compile(guiModule)
-
     }
     
     task webArchive(type: Zip) {
@@ -265,6 +244,7 @@ configure(webModule) {
     task clearMessagesCache(type: CubaClearMessagesCache) {
         appName = 'declarativecontrollers'
     }
+    
     deployConf.dependsOn clearMessagesCache
 
     task cleanConf(description: 'Cleans up conf directory') {
@@ -283,10 +263,6 @@ configure(webModule) {
         appJars('declarativecontrollers-global', 'declarativecontrollers-gui', 'declarativecontrollers-web')
     }
 }
-
-
-
-
 
 task undeploy(type: Delete, dependsOn: ':declarativecontrollers-web:cleanConf') {
     delete("$cuba.tomcat.dir/shared")
