@@ -15,7 +15,8 @@ buildscript {
     }
     dependencies {
         classpath "com.haulmont.gradle:cuba-plugin:$cubaVersion"
-
+        // Bintray upload plugin
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0"
         classpath 'net.saliman:gradle-cobertura-plugin:2.5.0'
     }
 }
@@ -313,4 +314,34 @@ apply from: 'extra.gradle'
 
 clean {
     delete = ['build/libs', 'build/tmp']
+}
+
+subprojects {
+    apply plugin: 'com.jfrog.bintray'
+
+    bintray {
+        user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+        key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+
+        configurations = ['archives']
+
+        // make files public ?
+        publish = true
+        // override existing artifacts?
+        override = false
+
+        // metadata
+        pkg {
+            repo = 'cuba-components'
+            name = 'cuba-component-declarative-controllers'
+
+            userOrg = 'balvi'
+
+            websiteUrl = 'https://github.com/balvi/cuba-component-declarative-controllers'
+            issueTrackerUrl = 'https://github.com/balvi/cuba-component-declarative-controllers/issues'
+            vcsUrl = 'https://github.com/balvi/cuba-component-declarative-controllers.git' // Mandatory for Open Source projects
+            licenses = ["Apache-2.0"]
+            labels = ['cuba', 'cuba-platform', 'annotations', 'cuba-component']
+        }
+    }
 }
