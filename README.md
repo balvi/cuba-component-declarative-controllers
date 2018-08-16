@@ -9,26 +9,7 @@ CUBA component that allows to write generic features for a Controller and use th
 
 ## Installation
 
-1. Add the following maven repository `https://dl.bintray.com/balvi/cuba-components` to the build.gradle of your CUBA application:
-
-    
-    buildscript {
-        
-        //...
-        
-        repositories {
-        
-            // ...
-        
-            maven {
-                url  "https://dl.bintray.com/balvi/cuba-components"
-            }
-        }
-        
-        // ...
-    }
-    
-
+1. `declarative-controllers` is available in the [CUBA marketplace](https://www.cuba-platform.com/marketplace)
 2. Select a version of the add-on which is compatible with the platform version used in your project:
 
 | Platform Version | Add-on Version |
@@ -44,8 +25,14 @@ The latest version is:  [ ![Download](https://api.bintray.com/packages/balvi/cub
 Add custom application component to your project:
 
 * Artifact group: `de.balvi.cuba.declarativecontrollers`
-* Artifact name: `declarative-controllers-global`
+* Artifact name: `declarativecontrollers-global`
 * Version: *add-on version*
+
+```groovy
+dependencies {
+  appComponent("de.balvi.cuba.declarativecontrollers:declarativecontrollers-global:*addon-version*")
+}
+```
 
 ### Motivation & Example usage: Comments feature
 
