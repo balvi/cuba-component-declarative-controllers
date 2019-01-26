@@ -1,8 +1,9 @@
 package de.balvi.cuba.declarativecontrollers.web.helper
 
+import com.haulmont.cuba.gui.UiComponents
 import com.haulmont.cuba.gui.components.Button
 import com.haulmont.cuba.gui.components.ButtonsPanel
-import com.haulmont.cuba.gui.xml.layout.ComponentsFactory
+import com.haulmont.cuba.gui.components.ComponentContainer
 import groovy.transform.CompileStatic
 import org.springframework.stereotype.Component
 
@@ -13,10 +14,10 @@ import javax.inject.Inject
 class ButtonsPanelHelperBean implements ButtonsPanelHelper{
 
     @Inject
-    ComponentsFactory componentsFactory
+    UiComponents uiComponents
 
     @Override
-    Button getOrCreateButton(com.haulmont.cuba.gui.components.Component.Container container, String buttonId, String buttonsPanelId) {
+    Button getOrCreateButton(ComponentContainer container, String buttonId, String buttonsPanelId) {
         Button button = container.getComponent(buttonId) as Button
         if (buttonsPanelId && !button) {
             ButtonsPanel buttonsPanel = container.getComponent(buttonsPanelId) as ButtonsPanel
@@ -31,7 +32,7 @@ class ButtonsPanelHelperBean implements ButtonsPanelHelper{
             return null
         }
 
-        Button button = componentsFactory.createComponent(Button)
+        Button button = uiComponents.create(Button)
         button.id = id
 
         Integer maxIndex = determineMaxButtonIndex(buttonsPanel, vorherigeButtonIds)
