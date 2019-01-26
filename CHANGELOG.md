@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   This release is more for fast upgrading your existing application if you rely on this app component. CUBA 7 Screens API
   will be supported in later releases.
 
+### Changed (Breaking!)
+- `ButtonsPanelHelper.getOrCreateButton` does not use `Component.Container`, but `com.haulmont.cuba.gui.components.ComponentContainer` as required in CUBA 7
+
+
 ### Dependencies
 - CUBA 7.0.x
 
