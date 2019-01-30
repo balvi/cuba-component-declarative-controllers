@@ -8,3 +8,5 @@ deploy/*
 modules/*/build/*
 out
 test-run
+.idea
+*.DS_Store
