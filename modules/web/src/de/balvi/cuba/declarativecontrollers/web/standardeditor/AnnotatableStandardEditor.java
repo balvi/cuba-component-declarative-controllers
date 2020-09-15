@@ -14,14 +14,17 @@ public class AnnotatableStandardEditor<T extends Entity> extends StandardEditor<
     protected ScreenAnnotationDispatcher screenAnnotationDispatcher;
     private ScreenOptions screenOptions;
 
-    @Subscribe
-    public void onInit(InitEvent event) {
+    public AnnotatableStandardEditor(){
+        addInitListener(this::onInitEvent);
+        addBeforeShowListener(this::onBeforeShowEvent);
+    }
+
+    public void onInitEvent(InitEvent event) {
         this.screenOptions = event.getOptions();
         screenAnnotationDispatcher.executeInit(this, screenOptions);
     }
 
-    @Subscribe
-    public void onBeforeShow(BeforeShowEvent event) {
+    public void onBeforeShowEvent(BeforeShowEvent event) {
         screenAnnotationDispatcher.executeBeforeShow(this, screenOptions);
     }
 }

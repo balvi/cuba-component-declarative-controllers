@@ -14,14 +14,17 @@ public class AnnotatableStandardLookup<T extends Entity> extends StandardLookup<
     protected ScreenAnnotationDispatcher screenAnnotationDispatcher;
     private ScreenOptions screenOptions;
 
-    @Subscribe
-    public void onInit(InitEvent event) {
+    public AnnotatableStandardLookup(){
+        addInitListener(this::onInitEvent);
+        addBeforeShowListener(this::onBeforeShowEvent);
+    }
+
+    public void onInitEvent(InitEvent event) {
         this.screenOptions = event.getOptions();
         screenAnnotationDispatcher.executeInit(this, screenOptions);
     }
 
-    @Subscribe
-    public void onBeforeShow(BeforeShowEvent event) {
+    public void onBeforeShowEvent(BeforeShowEvent event) {
         screenAnnotationDispatcher.executeBeforeShow(this, screenOptions);
     }
 }
