@@ -34,7 +34,7 @@ apply(plugin: 'cuba')
 cuba {
     artifact {
         group = 'de.balvi.cuba.declarativecontrollers'
-        version = "0.10.0"
+        version = '0.11.0'
         isSnapshot = false
     }
     tomcat {
